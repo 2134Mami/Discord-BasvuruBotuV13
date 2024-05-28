@@ -60,7 +60,7 @@ setInterval(() => {
 
 client.on("ready", async () => {
 console.log(`${client.user.tag} İsmi İle Bot Aktif!`)
-client.user.setActivity(`UNUTED KINGDOM`)
+client.user.setActivity(`Nova Development`)
 const guild1 = client.guilds.cache.get(config.guild)
 if(guild1){
 if(guild1.channels.cache.find(a => a.name === "BAŞVURULAR")){
@@ -90,7 +90,7 @@ const embed = new MessageEmbed()
 .setColor(config.embed.color)
 .setDescription(config.embed.description)
 .setTimestamp()
-.setFooter("Unıted Kıngdom")
+.setFooter("COLD ORGANİZASYON")
 
 const data = db.get("ubmesaj")
 if(data){
@@ -179,7 +179,7 @@ const embed1 = new MessageEmbed()
 .setColor("BLUE")
 .setDescription("**Aşşağıda Sana Sorulan Sorulara Cevap Vererek Başvuru Yapa Bilirsin. Sana Sıra ile `"+config.sorular.length+"` Soru Sorulacak, Sen Bir Soruya Yanıt Verince Bot Diğer Soruyu Sorar!\nToplam 10 Dakikan Var.**")
 .setTimestamp()
-.setFooter("Unıted Kıngdom")
+.setFooter("COLD ORGANİZASYON")
 await mr.send({embeds: [embed1]}).catch(e => {})
 await mr.send("<@"+user.id+"> 1 Soru: "+config.sorular[num]).catch(e => {})
 
@@ -222,7 +222,7 @@ const embed = new MessageEmbed()
 .setColor("BLUE")
 .setDescription("Başvuran: <@"+user.id+">\n\n"+cevaplar.map(cs => cs).join("\n\n"))
 .setTimestamp()
-.setFooter("Unıted Kıngdom")
+.setFooter("COLD ORGANİZASYON")
 await log.send({ embeds: [embed], components: [button] }).then(async cs => {
 await db.set("başvuru."+cs.id, user.id)
 }).catch(e => {})
