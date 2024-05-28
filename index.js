@@ -60,7 +60,7 @@ setInterval(() => {
 
 client.on("ready", async () => {
 console.log(`${client.user.tag} İsmi İle Bot Aktif!`)
-client.user.setActivity(`Umut Bayraktar ♥ Code Share`)
+client.user.setActivity(`UNUTED KINGDOM`)
 const guild1 = client.guilds.cache.get(config.guild)
 if(guild1){
 if(guild1.channels.cache.find(a => a.name === "BAŞVURULAR")){
@@ -78,10 +78,10 @@ if(channel1){
 const role2 = guild.roles.cache.get(config.sonuc.sRole)
 if(role2){
 let button = new MessageButton()
-.setLabel("Başvur")
+.setLabel("Başvuru Yap")
 .setStyle("SECONDARY")
 .setCustomId("başvuru")
-.setEmoji("📨")
+.setEmoji("1237779681156272301")
 const row = new MessageActionRow().addComponents(button)
   
 const embed = new MessageEmbed()
@@ -90,7 +90,7 @@ const embed = new MessageEmbed()
 .setColor(config.embed.color)
 .setDescription(config.embed.description)
 .setTimestamp()
-.setFooter("❤️ By Umut Bayraktar")
+.setFooter("Unıted Kıngdom")
 
 const data = db.get("ubmesaj")
 if(data){
@@ -152,7 +152,7 @@ if(!user.roles.cache.has(config.sonuc.sRole)){
 if(!db.get("başvurutimeout."+user.id)){
 const kontrol = guild.channels.cache.find(cs => cs.name === 'basvuru-'+user.id)
 if(kontrol){
-await interaction.reply({ content: '> **❌ Zaten açık bir başvuru talebin var!**', ephemeral: true}).catch(e => {})
+await interaction.reply({ content: '> **<a:carpi:1239984008838778971> Zaten açık bir başvuru talebin var!**', ephemeral: true}).catch(e => {})
 } else {
 let kontrol2 = guild.channels.cache.find(cs => cs.name === "BAŞVURULAR")
 if(!kontrol2){
@@ -179,7 +179,7 @@ const embed1 = new MessageEmbed()
 .setColor("BLUE")
 .setDescription("**Aşşağıda Sana Sorulan Sorulara Cevap Vererek Başvuru Yapa Bilirsin. Sana Sıra ile `"+config.sorular.length+"` Soru Sorulacak, Sen Bir Soruya Yanıt Verince Bot Diğer Soruyu Sorar!\nToplam 10 Dakikan Var.**")
 .setTimestamp()
-.setFooter("❤️ By Umut Bayraktar")
+.setFooter("Unıted Kıngdom")
 await mr.send({embeds: [embed1]}).catch(e => {})
 await mr.send("<@"+user.id+"> 1 Soru: "+config.sorular[num]).catch(e => {})
 
@@ -197,7 +197,7 @@ const collector = mr.createMessageCollector({ filter, time: 600000});
   
 collector.on('collect', async (msg) => {
 if(config.sorular[num]){
-cevaplar.push("**SORU "+Number(num+1)+": `"+config.sorular[num]+"`\nYANIT: `"+msg.content+"`**")
+cevaplar.push("**<:sorular:1237778317629984778> SORU "+Number(num+1)+": `"+config.sorular[num]+"`\nYANIT: `"+msg.content+"`**")
 num = num+1
 await mr.send(config.sorular[num] ? "<@"+user.id+"> "+Number(num+1)+" Soru: "+config.sorular[num] : "**Soruları Cevapladığın İçin Teşekkürler, Bütün Sorular Bitti. Başvurun Yetkili Ekibine İletildi Artık Beklemen Gerekli!**").catch(async e => {})
 if(config.sorular.length === num){
@@ -222,7 +222,7 @@ const embed = new MessageEmbed()
 .setColor("BLUE")
 .setDescription("Başvuran: <@"+user.id+">\n\n"+cevaplar.map(cs => cs).join("\n\n"))
 .setTimestamp()
-.setFooter("❤️ By Umut Bayraktar")
+.setFooter("Unıted Kıngdom")
 await log.send({ embeds: [embed], components: [button] }).then(async cs => {
 await db.set("başvuru."+cs.id, user.id)
 }).catch(e => {})
@@ -234,12 +234,12 @@ return await mr.delete().catch(e => {console.log("Kanal Silmeye Yetkim Yetmiyor 
 }, 10000)
 });
   
-await interaction.reply({ content: '> **✅ Başvuru talebin için <#'+mr.id+'> kanalı açıldı. Bu kanala giderek soruları cevapla lütfen!**', ephemeral: true}).catch(e => {})
+await interaction.reply({ content: '> **<a:tik_3:1238551234785443860> Başvuru talebin için <#'+mr.id+'> kanalı açıldı. Bu kanala giderek soruları cevapla lütfen!**', ephemeral: true}).catch(e => {})
 }).catch(e => {console.log("Kanal Oluşturmaya Yetkim Yetmiyor!")})
 }} else {
-await interaction.reply({ content: '> **❌ Zaten kısa süre önce reddedilmiş bir başvurun var. Tekrar başvurmak için `'+ms(Number(db.get("başvurutimeout."+user.id)+config.sonuc.timeout-Date.now()))+'` beklemen gerek!**', ephemeral: true}).catch(e => {})
+await interaction.reply({ content: '> **<a:carpi:1239984008838778971> Zaten kısa süre önce reddedilmiş bir başvurun var. Tekrar başvurmak için `'+ms(Number(db.get("başvurutimeout."+user.id)+config.sonuc.timeout-Date.now()))+'` beklemen gerek!**', ephemeral: true}).catch(e => {})
 }} else {
-await interaction.reply({ content: '> **❌ Zaten yetkili rolüne sahipsin tekrar başvuru yapamazsın!**', ephemeral: true}).catch(e => {})
+await interaction.reply({ content: '> **<a:carpi:1239984008838778971> Zaten yetkili rolüne sahipsin tekrar başvuru yapamazsın!**', ephemeral: true}).catch(e => {})
 }}}}
 
   
@@ -257,9 +257,9 @@ await csm.roles.add(role.id).catch(e => {console.log("Kullanıcıya Rol Vermeye 
 }})
 await db.delete("başvuru."+interaction.message.id)
 await csm.send(config.sonuc.successMessage).then(async ss => {
-await interaction.reply({ content: '> **✅ <@'+csm.id+'> İsimli kişiye yetkili rolü verildi ve dm üzerinden bilgilendirme mesajı yollandı!**', ephemeral: true}).catch(e => {})
+await interaction.reply({ content: '> **<a:tik_3:1238551234785443860> <@'+csm.id+'> İsimli kişiye yetkili rolü verildi ve dm üzerinden bilgilendirme mesajı yollandı!**', ephemeral: true}).catch(e => {})
 }).catch(async e => {
-await interaction.reply({ content: '> **✅ <@'+csm.id+'> İsimli kişiye yetkili rolü verildi ancak dm kutusu kapalı diye bilgilendirme yapılamadı!**', ephemeral: true}).catch(e => {})
+await interaction.reply({ content: '> **<a:tik_3:1238551234785443860> <@'+csm.id+'> İsimli kişiye yetkili rolü verildi ancak dm kutusu kapalı diye bilgilendirme yapılamadı!**', ephemeral: true}).catch(e => {})
 })
 await interaction.message.delete().catch(e => {})
 }} else {
@@ -280,9 +280,9 @@ if(csm){
 await db.delete("başvuru."+interaction.message.id)
 await db.set("başvurutimeout."+csm.id, Date.now())
 await csm.send(config.sonuc.deleteMessage).then(async ss => {
-await interaction.reply({ content: '> **✅ <@'+csm.id+'> İsimli kişiye başvurusunun reddedildiği hakkında dm üzerinden bilgilendirme mesajı yollandı!**', ephemeral: true}).catch(e => {})
+await interaction.reply({ content: '> **<a:tik_3:1238551234785443860> <@'+csm.id+'> İsimli kişiye başvurusunun reddedildiği hakkında dm üzerinden bilgilendirme mesajı yollandı!**', ephemeral: true}).catch(e => {})
 }).catch(async e => {
-await interaction.reply({ content: '> **✅ <@'+csm.id+'> İsimli kişiye dm kutusu kapalı diye bilgilendirme yapılamadı!**', ephemeral: true}).catch(e => {})
+await interaction.reply({ content: '> **<a:tik_3:1238551234785443860> <@'+csm.id+'> İsimli kişiye dm kutusu kapalı diye bilgilendirme yapılamadı!**', ephemeral: true}).catch(e => {})
 })
 await interaction.message.delete().catch(e => {})
 } else {
